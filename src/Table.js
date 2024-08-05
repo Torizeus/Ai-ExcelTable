@@ -1,8 +1,7 @@
-// src/Table.js
-
 import React, { useState } from 'react';
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
+import JSZip from 'jszip';
 
 const Table = () => {
     const [rows, setRows] = useState([]);
@@ -59,7 +58,7 @@ const Table = () => {
         setRows(newRows);
     };
 
-    const saveAsExcel = () => {
+    const saveAsExcel = async () => {
         // Validate that each row has a PDF file uploaded
         for (const row of rows) {
             if (!row.pdfFile) {
@@ -67,7 +66,7 @@ const Table = () => {
                 return;
             }
         }
-    
+
         const exportData = rows.map(row => ({
             ID: row.id,
             'Entity Name': row.entityName,
@@ -96,21 +95,38 @@ const Table = () => {
             'User Assistance': row.userAssistance ? 'X' : '',
             'PDF Upload': row.pdfFile ? row.pdfFile.name : 'No file uploaded', // Include the PDF file name
         }));
-    
+
         const ws = XLSX.utils.json_to_sheet(exportData);
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, 'Data');
-    
+
         // Prompt for filename
         const filename = prompt("Please enter a filename for your Excel file:", "data");
         
         // If a filename was provided, use it; otherwise, use a default name
         const finalFilename = filename ? `${filename}.xlsx` : 'data.xlsx';
-    
-        // Save the workbook
-        XLSX.writeFile(wb, finalFilename);
+
+        // Generate Excel file as a Blob
+        const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+        const excelBlob = new Blob([wbout], { type: 'application/octet-stream' });
+
+        // Create a ZIP file
+        const zip = new JSZip();
+        zip.file(finalFilename, excelBlob);
+
+        // Add PDF files to the ZIP
+        rows.forEach(row => {
+            if (row.pdfFile) {
+                zip.file(row.pdfFile.name, row.pdfFile);
+            }
+        });
+
+        // Generate ZIP file
+        const zipBlob = await zip.generateAsync({ type: 'blob' });
+        
+        // Save the ZIP file
+        saveAs(zipBlob, filename ? `${filename}.zip` : 'data.zip');
     };
-    
 
     return (
         <div>
