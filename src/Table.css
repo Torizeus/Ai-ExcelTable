@@ -1,0 +1,117 @@
+/* Table.css */
+.table-container {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: auto;
+}
+
+.table-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.table-header h1 {
+    color: #4A90E2;
+    font-size: 2.5rem;
+}
+
+.description {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.table-nav {
+    margin-bottom: 20px;
+}
+
+.table-nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.table-nav li {
+    margin: 0 10px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #4A90E2;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.table-actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.action-button {
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+    background-color: #357ABD;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.data-table th, .data-table td {
+    padding: 12px;
+    text-align: center;
+}
+
+.data-table th {
+    background-color: #4A90E2;
+    color: white;
+    font-weight: bold;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.data-table tr:hover {
+    background-color: #e0e0e0;
+}
+
+.data-table input[type="text"], .data-table input[type="number"], .data-table input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.data-table input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.required-indicator {
+    color: red;
+}

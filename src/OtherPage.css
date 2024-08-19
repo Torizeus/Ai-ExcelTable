@@ -1,0 +1,101 @@
+/* OtherPage.css */
+.excel-upload {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: auto;
+}
+
+.upload-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.upload-header h1 {
+    color: #4A90E2;
+    font-size: 2rem;
+}
+
+.upload-nav {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.upload-nav ul {
+    list-style: none;
+    padding: 0;
+    display: inline-flex;
+}
+
+.upload-nav li {
+    margin: 0 10px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #4A90E2;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.uploaded-file {
+    font-size: 1.1rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.filter-controls {
+    margin-bottom: 20px;
+}
+
+.filter-controls label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.filter-category, .filter-id {
+    margin-top: 10px;
+}
+
+.filter-category select, .filter-id input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.data-table th, .data-table td {
+    padding: 12px;
+    text-align: center;
+}
+
+.data-table th {
+    background-color: #4A90E2;
+    color: white;
+    font-weight: bold;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.data-table tr:hover {
+    background-color: #e0e0e0;
+}

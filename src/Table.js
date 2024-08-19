@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 import JSZip from 'jszip';
+import { Link } from 'react-router-dom';
+import './Table.css'; // Import the CSS file
 
 const Table = () => {
     const [rows, setRows] = useState([]);
@@ -129,10 +131,22 @@ const Table = () => {
     };
 
     return (
-        <div>
-            <button onClick={addRow}>Add Row</button>
-            <button onClick={saveAsExcel} disabled={rows.length === 0}>Save as Excel</button>
-            <table>
+        <div className="table-container">
+            <header className="table-header">
+                <h1>Create New Table</h1>
+                <p className="description">Here you can create a new excel table about all of the AI-ethics code.</p>
+            </header>
+            <nav className="table-nav">
+                <ul>
+                    <li><Link className="nav-link" to="/">Home Page</Link></li>
+                    <li><Link className="nav-link" to="/SearchPage">Search Page</Link></li>
+                </ul>
+            </nav>
+            <div className="table-actions">
+                <button className="action-button" onClick={addRow}>Add Row</button>
+                <button className="action-button" onClick={saveAsExcel} disabled={rows.length === 0}>Save as Excel</button>
+            </div>
+            <table className="data-table">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -160,7 +174,7 @@ const Table = () => {
                         <th>Effectiveness</th>
                         <th>Solidarity</th>
                         <th>User Assistance</th>
-                        <th>PDF Upload <span style={{ color: 'red' }}>*</span></th> {/* Required indicator */}
+                        <th>PDF Upload <span className="required-indicator">*</span></th> {/* Required indicator */}
                     </tr>
                 </thead>
                 <tbody>
@@ -322,7 +336,7 @@ const Table = () => {
                                     type="file" 
                                     accept="application/pdf" 
                                     onChange={(event) => handleFileChange(index, event)} 
-                                    required // Mark as required
+                                    required
                                 />
                             </td>
                         </tr>
