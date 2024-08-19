@@ -8,7 +8,7 @@ import './styles.css'; // Ensure you have your styles imported
 
 const App = () => {
     return (
-        <Router>
+        <Router basename='/Ai-ExcelTable'>
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/Table" element={<Table />} />
